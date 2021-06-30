@@ -28,17 +28,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //int _counter = 0;
-  final TextEditingController _height = TextEditingController();
-  final TextEditingController _weight = TextEditingController();
+  final TextEditingController _heightController = TextEditingController();
+  final TextEditingController _weightController = TextEditingController();
 
   var calculateBMI;
   var result;
 
   void calculate() {
     setState(() {
-      double height = double.parse(_height.text) / 100;
-      double weight = double.parse(_weight.text);
+      double height = double.parse(_heightController.text) / 100;
+      double weight = double.parse(_weightController.text);
+
       calculateBMI = weight / (height * height);
       print(calculateBMI);
 
@@ -60,7 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Padding(
@@ -70,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextField(
               style: TextStyle(),
-              controller: _weight,
+              controller: _weightController,
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
               decoration: InputDecoration(
@@ -86,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 15),
             TextField(
-              controller: _height,
+              controller: _heightController,
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.done,
               decoration: InputDecoration(
